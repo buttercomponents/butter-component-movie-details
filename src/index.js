@@ -8,6 +8,7 @@ let {Dropdown} = Dropdowns
 let {Button} = Buttons
 
 let CloseButton = (props) => (props)
+let goBack = () => ('/')
 
 let LegendedButton = ({children, title}) => (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -41,18 +42,40 @@ let Info = ({year, runtime, genres, rating, ...props}) => (
 
 let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
     <div className={style.layout}>
-        <Navbar goBack="/" title="Go Back" toolbar={<ToolBar />} />
+        <Navbar goBack={goBack} title="Go Back" toolbar={<ToolBar />} />
 
         <div style={{display: 'flex', backgroundImg: `url(${backdrop})`}}>
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                <h1>{title}</h1>
+            <div style={{
+                height: '75vh',
+                width: '35vw',
+                marginLeft: '4vw',
+                fontFamily: 'var(--Font-title)',
+                position: 'relative',
+                zIndex: 10
+            }}>
+                <img src={cover} style={{padding: '4vh', borderRadius: '5px'}}/>
+            </div>
+
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                padding: '4vw'
+            }}>
+                <h1 style={{
+                    color: '#FFF',
+                    position: 'relative',
+                    textStroke: '1px rgba(0,0,0,0.1)',
+                    fontSize: '48px',
+                    fontSmoothing: 'antialiased'
+                }}>{title}</h1>
                 <Info {...props}/>
                 <p style={{flexGrow: 2}}>
                     {synopsis}
                 </p>
                 <PlayButtons {...props}/>
             </div>
-            <img src={cover} style={{padding: '4vh', borderRadius: '5px'}}/>
+
         </div>
     </div>
 )
