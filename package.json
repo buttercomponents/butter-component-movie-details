@@ -3,12 +3,6 @@
   "version": "0.1.0",
   "description": "A Butter Component to show the movie details",
   "main": "dist/bundle.js",
-  "scripts": {
-    "prepublish": "npm run build",
-    "build": "webpack --config node_modules/butter-component-builder/webpack.build.js --progress --profile --colors",
-    "start": "node node_modules/butter-component-builder/server.js",
-    "lint": "eslint src"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/buttercomponents/butter-component-movie-details.git"
@@ -34,7 +28,15 @@
     "butter-component-builder": "buttercomponents/butter-component-builder"
   },
   "dependencies": {
+    "butter-base-components": "buttercomponents/butter-base-components",
     "react-i18next": "^3.1.0",
     "react-transition-group": "^1.1.2"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "install": "PATH=$PATH:../.bin bcb-run install",
+    "build": "bcb-run build",
+    "start": "bcb-run start",
+    "lint": "bcb-run lint"
   }
 }
