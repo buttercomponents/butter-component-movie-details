@@ -73,10 +73,14 @@ let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
                 </p>
                 <PlayButtons {...props}/>
             </div>
-
         </div>
-    </div>
 )
+
+MovieDetails.defaultProps = {
+    subtitles: {none: null},
+    torrents: {Unknown: null},
+    genres: ['none']
+}
 export {
     MovieDetails as default
 }
