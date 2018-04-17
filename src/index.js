@@ -41,8 +41,6 @@ let Info = ({year, runtime, genres, rating, ...props}) => (
 )
 
 let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
-    <div className={style.layout}>
-        <Navbar goBack={goBack} title="Go Back" toolbar={<ToolBar />} />
 
         <div style={{display: 'flex', backgroundImg: `url(${backdrop})`}}>
             <div style={{
