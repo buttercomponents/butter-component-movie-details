@@ -51,7 +51,7 @@ let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
                 position: 'relative',
                 zIndex: 10
             }}>
-                <img src={cover} style={{padding: '4vh', borderRadius: '5px'}}/>
+                <img src={cover} style={{padding: '4vh', borderRadius: '5px', width: '40vw'}}/>
             </div>
 
             <div style={{
