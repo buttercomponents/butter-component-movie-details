@@ -11,7 +11,7 @@ let CloseButton = (props) => (props)
 let goBack = () => ('/')
 
 let LegendedButton = ({children, title}) => (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div style={{display: 'flex', flexDirection: 'row'}}>
         {children}
         {title}
     </div>
@@ -25,7 +25,7 @@ let ToolBar = ({}) => (
 )
 
 let PlayButtons = ({type, torrents, subtitles, ...props}) => (
-    <div style={{display: 'flex'}}>
+    <div style={{display: 'flex', flexWrap: 'wrap', paddingTop: '1vw'}}>
         <LegendedButton title={`Play ${type}`}><Button title="Watch Now" /></LegendedButton>
         <LegendedButton title="Subtitles"><Dropdown options={Object.keys(subtitles)}/></LegendedButton>
         <LegendedButton title="Quality"><Dropdown options={Object.keys(torrents)}/></LegendedButton>
@@ -44,21 +44,20 @@ let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
 
         <div style={{display: 'flex', backgroundImg: `url(${backdrop})`}}>
             <div style={{
-                height: '75vh',
-                width: '35vw',
-                marginLeft: '4vw',
-                fontFamily: 'var(--Font-title)',
+		display: 'flex',
                 position: 'relative',
                 zIndex: 10
             }}>
-                <img src={cover} style={{padding: '4vh', borderRadius: '5px', width: '40vw'}}/>
+                <img src={cover} style={{padding: '4vh', borderRadius: '5px', width: '40vw', objectFit: 'cover';}}/>
             </div>
 
             <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                padding: '4vw'
+                padding: '4vw',
+		width: '100%', 
+		overflow: 'auto'
             }}>
                 <h1 style={{
                     color: '#FFF',
