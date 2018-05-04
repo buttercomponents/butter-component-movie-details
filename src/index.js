@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import style from './styl/style.styl';
-import {Navbar, Dropdowns, Buttons} from 'butter-base-components';
+import {Navbar, Dropdowns, Buttons, Stars} from 'butter-base-components';
 import ActionBar from './components/action-bar';
 
 let {Dropdown} = Dropdowns
@@ -35,20 +35,63 @@ let PlayButtons = ({type, torrents, subtitles, ...props}) => (
 )
 
 let Info = ({year, runtime, genres, rating, ...props}) => (
-    <div>
-        {year} · {runtime} mins · {genres[0]} · {rating}
+    <div className={style.info} style={{
+        fontFamily: 'var(--Font-title)',
+        fontWeight: 'bold',
+        color: '#999',
+        padding: '1vh 1vh 1vh 0'
+    }}>
+        <span>
+            {year}
+        </span>
+        <span>
+            {runtime} mins
+        </span>
+        <span>
+            {genres[0]}
+        </span>
+        <span>
+            <Stars rating={rating}/>
+        </span>
     </div>
 )
 
 let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
-
-        <div style={{display: 'flex', backgroundImg: `url(${backdrop})`}}>
+    [
+        <div style={{
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            background: `url(${backdrop})`,
+            backgroundSize: 'cover',
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            filter: 'saturate(10%)  brightness(50%) contrast(150%) blur(5px)'
+        }}>
+        </div>,
+        <div style={{
+            position: 'absolute',
+            zIndex: 10,
+            display: 'flex',
+            flexDirection: 'row-reverse',
+        }}>
             <div style={{
-		display: 'flex',
+                height: '75vh',
+                width: '35vw',
+                margin: '0 4vw',
+                padding: '4vh 0',
                 position: 'relative',
+                width: '40%',
+                display: 'flex',
                 zIndex: 10
             }}>
-                <img src={cover} style={{padding: '4vh', borderRadius: '5px', width: '40vw', objectFit: 'cover';}}/>
+                <img src={cover } style={{
+                    borderRadius: '5px',
+                    boxShadow: '0px 0px 10px -2px #000',
+                    width: '40vw',
+                    objectFit: 'cover'
+                }}/>
             </div>
 
             <div style={{
@@ -64,15 +107,21 @@ let MovieDetails = ({title, synopsis, cover, backdrop, ...props}) => (
                     position: 'relative',
                     textStroke: '1px rgba(0,0,0,0.1)',
                     fontSize: '48px',
-                    fontSmoothing: 'antialiased'
+                    fontSmoothing: 'antialiased',
+                    fontFamily: 'var(--Font-title)',
+                    fontWeight: 'bold'
                 }}>{title}</h1>
                 <Info {...props}/>
-                <p style={{flexGrow: 2}}>
+                <p style={{
+                    flexGrow: 2,
+                }}>
                     {synopsis}
                 </p>
                 <PlayButtons {...props}/>
             </div>
         </div>
+    ]
+
 )
 
 MovieDetails.defaultProps = {
